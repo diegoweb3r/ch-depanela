@@ -1,0 +1,269 @@
+:root{
+    /* --- Brancos Suaves / Off-White (Fundos claros, cartões, contrastes) --- */
+  --color-white-pure: #FAFAF7;    /* Quase branco, sem agredir os olhos */
+  --color-white-cream: #F5F3ED;   /* Tom osso/marfim delicado */
+  --color-white-paper: #EFECE6;   /* Fundo ligeiramente acinzentado/quente */
+
+  /* --- Beges / Neutros Quentes (Superfícies, borders, fundos de cartões) --- */
+  --color-beige-light: #E7E2D6;   /* Bege claro e limpo */
+  --color-beige-sand: #D9D2C3;    /* Bege areia intermediário */
+  --color-beige-muted: #C8BEAC;   /* Bege seco para divisores ou bordas sutis */
+
+  /* --- Marrons (Acentos, botões, destaques) --- */
+  --color-brown-light: #A48972;   /* Caramelo suave / café com leite */
+  --color-brown-medium: #785E4F;  /* Marrom terroso equilibrado */
+  --color-brown-dark: #4A3B32;    /* Marrom café profundo */
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0 ;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-beige-light);
+    align-items: center;
+    padding: 2rem 1rem;
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-brown-dark);
+}
+
+.tag{
+    background-color: var(--color-beige-sand);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    font-weight: 450;
+}
+
+header{
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 3.5rem;
+}
+
+.desc{
+    font-weight: 300;
+}
+
+.info{
+    width: 75%;
+    max-width: 480px;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+main{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main h2{
+    margin-bottom: 0.8rem;
+}
+
+main p{
+    text-align: center;
+}
+
+.presentes-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 2rem;
+}
+
+.presente-card{
+    border-bottom: 1px solid var(--color-brown-dark);
+    border-top: 1px solid var(--color-brown-dark);
+    max-width: 400px;
+    padding: .2rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+.presente-card:hover{
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 12px var(--color-brown-dark)
+}
+.presente-card img{
+    width: 264px;
+    border-radius: 16px 16px 0 0;
+}
+
+.presente-card h3{
+    margin: .5rem 0;
+}
+
+.presente-desc{
+    width: 65%;
+    font-weight: 300;
+    margin-bottom: .5rem;
+}
+
+.presente-preco{
+    font-weight: 900;
+}
+
+.presente-comprar{
+    margin: 1rem 0;
+    width: 90%;
+    padding: 0.5rem;
+    background-color: var(--color-brown-light);
+    border: none;
+    border-radius: 16px;
+    color: var(--color-beige-light);
+    font-weight: 700;
+    text-align: center;  
+    cursor: pointer;
+}
+
+footer{
+    width: 100%;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-top: 1px solid var(--color-brown-dark);
+    align-items: center;
+}
+
+.modal-overlay{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+
+    width: 90%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    background-color: var(--color-white-pure);
+    border: 1px solid var(--color-brown-medium);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+}
+
+.modal-overlay.ativo{
+    display: flex;
+}
+
+body:has(.modal-overlay.ativo)::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 9998;
+}
+
+.pix-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.qrcode-wrapper {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: inline-block;
+}
+
+#qrcodeCanvas {
+  display: block;
+}
+
+.btn-fechar{
+    align-self: flex-end;
+    background-color: var(--color-brown-dark);
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+}
+
+.resumo-presente{
+    margin-bottom: 1rem;
+}
+
+.subtitulo-agradecimento{
+    font-weight: 300;
+    margin-bottom:1rem ;
+}
+
+#formPresente input, #formPresente textarea{
+    border: none;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container label, .input-container input, .input-container textarea{
+    margin-bottom: 0.8rem;
+}
+
+.input-container input, .input-container textarea{
+    padding: .5rem;
+
+}
+
+.input-group{
+    display: flex;
+    justify-content:space-between;
+}
+
+.input-group input{
+    width: 100%;
+    margin-top: 0.8rem;
+}
+
+.input-group button{
+    border: none;
+    background-color: var(--color-brown-dark);
+    padding: 0.5rem;
+    color: var(--color-beige-light);
+    border-radius: 0.8rem;
+    margin: 0.8rem 0 0 .5rem;
+    cursor: pointer;
+}
+
+
+@media (min-width: 640px){
+    .presentes-container{
+        grid-template-columns: repeat(2, 1fr)
+    }
+}
