@@ -31,12 +31,21 @@
       </section>
     </header>
     <main>
+      <h2>🛒 Carrinho</h2>
+      <p>Confira os itens que você adicionou no seu carrinho.</p>
+      <div class="itens-container">
+        <ul id="itens-list">
+
+        </ul>
+      </div>
+      <p id="totalCart">Total: R$ 0,00</p>
+      <button id="btnFinalizarCompra" class="presente-comprar">Finalizar compra</button>
       <h2>🎁 Lista de presentes</h2>
-      <p>Escolha o item desejado e voce será direcionado ao código PIX!</p>
+      <p>Escolha o item desejado e adicione no seu carrinho.</p>
       <section class="presentes-container">
         <div class="presente-card">
           <img class="presente-img" src="./assets/Pano de prato.jpg" alt="" />
-          <h3>Pano de Prato</h3>
+          <h3 class="item-name">Pano de Prato</h3>
           <p class="presente-desc">
             Conjunto de panos de prato, pra que? Vai deixar a louça no
             escorredor rsrs
@@ -46,7 +55,7 @@
         </div>
         <div class="presente-card">
           <img class="presente-img" src="./assets/Utensilhos.jpg" alt="" />
-          <h3>Utensílios de cozinha</h3>
+          <h3 class="item-name">Utensílios de cozinha</h3>
           <p class="presente-desc">
             Para que o Pedro possa cozinhar pra gente nesse chá de panela, né mores?
           </p>
@@ -59,7 +68,7 @@
             src="./assets/escorregor de macarrao.jpg"
             alt=""
           />
-          <h3>Escorredor de macarrão</h3>
+          <h3 class="item-name">Escorredor de macarrão</h3>
           <p class="presente-desc">
             Pedro ja perdeu muito miojo tentando escorrer a água com a tampa da
             panela
@@ -69,14 +78,14 @@
         </div>
         <div class="presente-card">
           <img class="presente-img" src="./assets/Jogo-de-copos.jpg" alt="" />
-          <h3>Jogo de copos</h3>
+          <h3 class="item-name">Jogo de copos</h3>
           <p class="presente-desc">Cheers!! Um brinde a essa nova fase. Que seja de luz, amor e prosperidade</p>
           <p class="presente-preco">R$ 75,00</p>
           <a class="presente-comprar">🎁 Presentear</a>
         </div>
         <div class="presente-card">
           <img class="presente-img" src="./assets/Jogo de Toalhas.jpg" alt="" />
-          <h3>Jogo de toalhas</h3>
+          <h3 class="item-name">Jogo de toalhas</h3>
           <p class="presente-desc">
             Tchau, preguiça. Tchau, sujeira. Adeus, cheirinho de suor. Secar bem as partes
           </p>
@@ -85,14 +94,14 @@
         </div>
         <div class="presente-card">
           <img class="presente-img" src="./assets/Liquidificador.jpg" alt="" />
-          <h3>Liquidificador</h3>
+          <h3 class="item-name">Liquidificador</h3>
           <p class="presente-desc">Vamos ter batidinhas no open house????? Se alguém comprar o liquidificador ein</p>
           <p class="presente-preco">R$ 150,00</p>
           <a class="presente-comprar">🎁 Presentear</a>
         </div>
         <div class="presente-card">
           <img class="presente-img" src="./assets/Jogo de Panelas.jpg" alt="" />
-          <h3>Jogo de Panela</h3>
+          <h3 class="item-name">Jogo de Panela</h3>
           <p class="presente-desc">
             Conjunto de panelas antiaderentes com 5 peças. Essencial para o
             Pedro não queimar o ovo frito.
@@ -102,7 +111,7 @@
         </div>
         <div class="presente-card">
           <img class="presente-img" src="./assets/Aspirador.jpg" alt="" />
-          <h3>Aspirador de pó</h3>
+          <h3 class="item-name">Aspirador de pó</h3>
           <p class="presente-desc">
             Esse aqui vai aspirar mais pó que o Pedro (calma, é brincadeira Aurea, é só uma brincadeira)
           </p>
@@ -111,7 +120,7 @@
         </div>
         <div class="presente-card">
           <img class="presente-img" src="./assets/Air Fryer.jpg" alt="" />
-          <h3>Air Fryer</h3>
+          <h3 class="item-name">Air Fryer</h3>
           <p class="presente-desc">
             Ele ta tentando emagrecer, não pode comer fritura, vamos apoiar esse processo
           </p>
@@ -120,7 +129,7 @@
         </div>
         <div class="presente-card">
           <img class="presente-img" src="./assets/Sofá.jpg" alt="" />
-          <h3>Sofá</h3>
+          <h3 class="item-name">Sofá</h3>
           <p class="presente-desc">
             Vamos comprar um bem confortável pois a gente também vai usar esse sofá
           </p>
@@ -141,8 +150,8 @@
           ❌
         </button>
         <p class="resumo-presente">
-          Você está comprando um <strong id="modalItemNome">Teste</strong> no
-          valor de <strong><span id="modalItemValor">00,00</span></strong>
+          Você está comprando um <strong id="modalItemNome"></strong> no
+          valor de <strong><span id="modalItemValor"></span></strong>
         </p>
         <form id="formPresente">
           <div class="input-container">

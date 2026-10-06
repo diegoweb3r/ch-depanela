@@ -2,8 +2,8 @@
 const PIX_CONFIG = {
   // Telefone deve incluir o código do país (+55) no padrão Pix
   chave: "+5521991747840",
-  beneficiario: "PEDRO BRITTO",      // Sem acentos
-  cidade: "RIO DE JANEIRO"           // Sem acentos
+  beneficiario: "PEDRO BRITTO",
+  cidade: "RIO DE JANEIRO"           
 };
 
 // --- ELEMENTOS DO DOM ---
@@ -15,6 +15,7 @@ const qrcodeCanvas = document.getElementById("qrcodeCanvas");
 const pixCodigoInput = document.getElementById("pixCodigoInput");
 const btnCopiarPix = document.getElementById("btnCopiarPix");
 const cards = document.querySelectorAll(".presente-card");
+const cart = [];
 
 // --- FUNÇÕES PIX (PADRÃO BR CODE / EMV) ---
 function formatarCampoPix(id, valor) {
@@ -100,7 +101,10 @@ cards.forEach((card) => {
     
     const precoNumerico = parseFloat(
       precoTexto.replace("R$", "").replace(".", "").replace(",", ".").trim()
+
     );
+
+    addToCart(titulo, precoNumerico);
 
     modalItemNome.innerText = titulo;
     modalItemValor.innerText = precoTexto.replace("R$", "").trim();
@@ -149,3 +153,35 @@ btnCopiarPix.addEventListener("click", async () => {
     alert("Código Pix copiado!");
   }
 });
+
+//Adicionar ao carrinho
+function addToCart(itemName, itemPrice) {
+    const itensListUl = document.getElementById("itens-list");
+    const li = document.createElement("li");
+    const deleteItemBtn = document.createElement("button");
+    let totalCart = document.getElementById("totalCart");
+    
+
+    li.classList.add("item-cart-lista");
+    li.classList.add("presente-comprar");
+    deleteItemBtn.classList.add("delete-item-btn");
+    deleteItemBtn.textContent = "❌ ";
+    li.textContent = `${itemName}`;
+    li.appendChild(deleteItemBtn);
+    itensListUl.appendChild(li);
+
+    cart.push(sumItensToCart(itemPrice));
+    totalCart.textContent = `Total: R$ ${cart.reduce((acc, curr) => acc + curr, 0).toFixed(2).replace(".", ",")}`;
+    
+
+
+}
+
+function sumItensToCart(itemPrice){
+  
+  let currentTotal = 0;
+
+  currentTotal += itemPrice;
+
+  return currentTotal;
+}

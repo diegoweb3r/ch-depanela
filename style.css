@@ -21,6 +21,10 @@
     padding: 0;
 }
 
+li{
+    list-style: none;
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -80,6 +84,9 @@ main p{
     text-align: center;
 }
 
+.item-cart-lista{
+    
+}
 .presentes-container{
     display: grid;
     grid-template-columns: 1fr;
