@@ -18,6 +18,7 @@ const cards = document.querySelectorAll(".presente-card");
 const continuarComprandoButton = document.getElementById("continuarComprandoButton");
 const cart = [];
 
+
 // --- FUNÇÕES PIX (PADRÃO BR CODE / EMV) ---
 function formatarCampoPix(id, valor) {
   const tamanho = valor.length.toString().padStart(2, "0");
@@ -124,7 +125,7 @@ cards.forEach((card) => {
     // 2º: Desenha o QR Code (agora que o canvas já tem dimensões visíveis)
     desenharQRCode(pixPayload);
 
-      addToCart(titulo, precoNumerico);
+    addToCart(titulo, precoNumerico);
   });
 });
 
@@ -167,8 +168,9 @@ function addToCart(itemName, itemPrice) {
     const li = document.createElement("li");
     const deleteItemBtn = document.createElement("button");
     let totalCart = document.getElementById("totalCart");
-    
-
+  
+   
+    console.log (cart.length);
     li.classList.add("item-cart-lista");
     deleteItemBtn.classList.add("delete-item-btn");
     deleteItemBtn.textContent = "❌ ";
@@ -176,16 +178,35 @@ function addToCart(itemName, itemPrice) {
     li.appendChild(deleteItemBtn);
     itensListUl.appendChild(li);
 
-    cart.push(sumItensToCart(itemPrice));
-    totalCart.textContent = `Total: R$ ${cart.reduce((acc, curr) => acc + curr, 0).toFixed(2).replace(".", ",")}`;
-    
+    const item = {
+      id: crypto.randomUUID(),
+      nome: itemName,
+      preco: itemPrice
+  };
 
+    cart.push(item);
+    li.dataset.id = item.id;
+    const id = li.dataset.id;
+    totalCart.textContent = `Total: R$ ${cart.reduce((acc, curr) => acc + curr.preco, 0).toFixed(2).replace(".", ",")}`;
+   
+    deleteItemBtn.addEventListener("click", () => {
+    const li = deleteItemBtn.closest("li");
 
+      li.remove();
+      cart.splice((cart.findIndex(i => i.id === id)), 1);
+      totalCart.textContent = `Total: R$ ${cart.reduce((acc, curr) => acc + curr.preco, 0).toFixed(2).replace(".", ",")}`;
+    });
 }
 
+//Soma os itens do carrinho
 function sumItensToCart(itemPrice){
     let currentTotal = 0;
   currentTotal += itemPrice;
   
   return currentTotal;
+}
+
+//Remover item do carrinho
+function removeItemFromCart(event){
+
 }
