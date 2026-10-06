@@ -42,9 +42,9 @@
         <p id="totalCart">Total: R$ 0,00</p>
         <button id="btnFinalizarCompra" class="presente-comprar">Finalizar compra</button>
       </section>
-      <h2>🎁 Lista de presentes</h2>
-      <p>Escolha o item desejado e adicione no seu carrinho.</p>
       <section class="presentes-container">
+        <h2>🎁 Lista de presentes</h2>
+        <p>Escolha o item desejado e adicione no seu carrinho.</p>
         <div class="presente-card">
           <img class="presente-img" src="./assets/Pano de prato.jpg" alt="" />
           <h3 class="item-name">Pano de Prato</h3>
@@ -142,7 +142,8 @@
 
      
     </main>
- <section class="modal-overlay" id="modalpix">
+
+ <section class="modal-overlay" id="modalResumo">
         <button
           type="button"
           class="btn-fechar"
@@ -152,45 +153,51 @@
           ❌
         </button>
         <p class="resumo-presente">
-          Você está comprando um <strong id="modalItemNome"></strong> no
-          valor de <strong><span id="modalItemValor"></span></strong>
-        </p>
-        <form id="formPresente">
-          <div class="input-container">
-            <label for="nomeConvidado">Seu nome: </label>
-            <input
-              type="text"
-              id="nomeConvidado"
-              placeholder="Digite seu nome"
-              required
-            />
-          </div>
-          <div class="input-container">
-            <label for="msgConvidado">Deixe seu recado (Opcional):</label>
-            <textarea
-              id="msgConvidado"
-              name="mensagem"
-              rows="3"
-              cols="40"
-              placeholder="Digite aqui sua mensagem com carinho"
-            ></textarea>
-          </div>
-          <div class="pix-area" id="pixArea">
-            <div class="qrcode-wrapper">
-              <canvas id="qrcodeCanvas"></canvas>
-            </div>
-          </div>
-          <div class="pix-copia-cola">
-            <label for="pixCodigoInput">Pix Copia e Cola:</label>
-            <div class="input-group">
-              <input type="text" id="pixCodigoInput" readonly />
-              <button type="button" id="btnCopiarPix" class="btn-copiar">
-                Copiar
-              </button>
-            </div>
-          </div>
-        </form>
-      </section>
+        Você adicionou um <strong id="modalItemNome"></strong> no
+        valor de <strong><span id="modalItemValor"></span></strong> ao carrinho</p>
+        <button id="continuarComprandoButton" class="presente-comprar">Continuar Comprando</button>
+</section>
+
+<section class="modal-overlay" id="modalPix">
+  
+  
+  <form id="formPresente">
+    <div class="input-container">
+      <label for="nomeConvidado">Seu nome: </label>
+      <input
+      type="text"
+      id="nomeConvidado"
+      placeholder="Digite seu nome"
+      required
+      />
+    </div>
+    <div class="input-container">
+      <label for="msgConvidado">Deixe seu recado (Opcional):</label>
+      <textarea
+      id="msgConvidado"
+      name="mensagem"
+      rows="3"
+      cols="40"
+      placeholder="Digite aqui sua mensagem com carinho"
+      ></textarea>
+    </div>
+    <div class="pix-area" id="pixArea">
+      <div class="qrcode-wrapper">
+        <canvas id="qrcodeCanvas"></canvas>
+      </div>
+    </div>
+    <div class="pix-copia-cola">
+      <label for="pixCodigoInput">Pix Copia e Cola:</label>
+      <div class="input-group">
+        <input type="text" id="pixCodigoInput" readonly />
+        <button type="button" id="btnCopiarPix" class="btn-copiar">
+          Copiar
+        </button>
+      </div>
+    </div>
+  </form>
+
+</section>
     <footer>
       <p>Chá de Panela do Pedro Britto.</p>
       <p class="copy">Desenvolvido por <a href="">Diego Web3r</a></p>

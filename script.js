@@ -7,7 +7,7 @@ const PIX_CONFIG = {
 };
 
 // --- ELEMENTOS DO DOM ---
-const modal = document.getElementById("modalpix");
+const modal = document.getElementById("modalResumo");
 const btnFecharModal = document.getElementById("btnFecharModal");
 const modalItemNome = document.getElementById("modalItemNome");
 const modalItemValor = document.getElementById("modalItemValor");
@@ -15,6 +15,7 @@ const qrcodeCanvas = document.getElementById("qrcodeCanvas");
 const pixCodigoInput = document.getElementById("pixCodigoInput");
 const btnCopiarPix = document.getElementById("btnCopiarPix");
 const cards = document.querySelectorAll(".presente-card");
+const continuarComprandoButton = document.getElementById("continuarComprandoButton");
 const cart = [];
 
 // --- FUNÇÕES PIX (PADRÃO BR CODE / EMV) ---
@@ -104,12 +105,11 @@ cards.forEach((card) => {
 
     );
 
-    addToCart(titulo, precoNumerico);
-
     modalItemNome.innerText = titulo;
     modalItemValor.innerText = precoTexto.replace("R$", "").trim();
 
-    const pixPayload = gerarPixCopiaECola(
+
+      const pixPayload = gerarPixCopiaECola(
       PIX_CONFIG.chave,
       PIX_CONFIG.beneficiario,
       PIX_CONFIG.cidade,
@@ -123,11 +123,18 @@ cards.forEach((card) => {
 
     // 2º: Desenha o QR Code (agora que o canvas já tem dimensões visíveis)
     desenharQRCode(pixPayload);
+
+      addToCart(titulo, precoNumerico);
   });
 });
 
 // Fechar modal no botão X
 btnFecharModal.addEventListener("click", () => {
+  modal.classList.remove("ativo");
+});
+
+//Fechar modal no botao continuar comprando
+continuarComprandoButton.addEventListener("click", () => {
   modal.classList.remove("ativo");
 });
 
@@ -177,10 +184,8 @@ function addToCart(itemName, itemPrice) {
 }
 
 function sumItensToCart(itemPrice){
-  
-  let currentTotal = 0;
-
+    let currentTotal = 0;
   currentTotal += itemPrice;
-
+  
   return currentTotal;
 }
