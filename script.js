@@ -163,7 +163,6 @@ function addToCart(itemName, itemPrice) {
     
 
     li.classList.add("item-cart-lista");
-    li.classList.add("presente-comprar");
     deleteItemBtn.classList.add("delete-item-btn");
     deleteItemBtn.textContent = "❌ ";
     li.textContent = `${itemName}`;

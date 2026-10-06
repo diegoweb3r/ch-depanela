@@ -25,6 +25,12 @@ li{
     list-style: none;
 }
 
+button{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -84,9 +90,35 @@ main p{
     text-align: center;
 }
 
+#itens-list{
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 3fr;
+    background-color: var(--color-beige-sand);
+}
+
 .item-cart-lista{
+    margin: 0.5rem 0;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: var(--color-brown-light);
+    border: none;
+    border-radius: 16px;
+    color: var(--color-beige-light);
+    font-weight: 700;
+    text-align: center;  
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.deleteItemBtn{
+    border: none;
     
 }
+
 .presentes-container{
     display: grid;
     grid-template-columns: 1fr;
