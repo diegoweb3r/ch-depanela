@@ -83,6 +83,7 @@ h1{
 }
 
 main{
+    width: 100%;
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
@@ -145,13 +146,13 @@ main p{
 }
 
 .presentes-container{
-    width: 1000px;
+    width: 100%;
     max-width: 1200px;
-    min-width: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 }
 
 .presentes-titulos{
@@ -163,14 +164,17 @@ main p{
 
 .presentes-cards-containers{
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 264px), 1fr));
     gap: 1.5rem;
     width: 100%;
     max-width: 1200px;
-    margin-top: 2rem;
+    justify-items: center;
+    margin: 2rem auto;
 }
 
 .presente-card{
+    width: 100%;
+    max-width: 400px;
     border-bottom: 1px solid var(--color-brown-dark);
     border-top: 1px solid var(--color-brown-dark);
     max-width: 400px;
@@ -181,13 +185,17 @@ main p{
     align-items: center;
     transition: all 0.5s ease;
 }
+
 .presente-card:hover{
     transform: translateY(-2px);
     box-shadow: 8px 8px 12px var(--color-brown-dark)
 }
 .presente-card img{
-    width: 264px;
+    width: 100%;
+    max-width: 264px;
+    height: auto;
     border-radius: 16px 16px 0 0;
+
 }
 
 .presente-card h3{
@@ -333,6 +341,6 @@ body:has(.modal-overlay.ativo)::before {
 
 @media (min-width: 640px){
     .presentes-cards-containers{
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
