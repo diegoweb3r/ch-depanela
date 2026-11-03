@@ -20,6 +20,9 @@ const continuarComprandoButton = document.getElementById("continuarComprandoButt
 const btnFinalizarCompra = document.getElementById("btnFinalizarCompra");
 const btnFecharModalPix = document.getElementById("btnFecharModalPix");
 const totalCart = document.getElementById("totalCart");
+const emptyCartModal = document.getElementById("emptyCartModal");
+const emptyCartModalCloseBtn = document.getElementById("btnFecharModalEmptyCart");
+const btnVoltarPresentes = document.getElementById("btnVoltarPresentes");
 const cart = [];
 
 
@@ -138,6 +141,17 @@ window.addEventListener("click", (e) => {
   }
 });
 
+if(emptyCartModalCloseBtn) {
+  emptyCartModalCloseBtn.addEventListener("click", () => {
+    emptyCartModal.classList.remove("ativo");
+  });
+}
+
+if(btnVoltarPresentes) {
+  btnVoltarPresentes.addEventListener("click", () => {
+    emptyCartModal.classList.remove("ativo");
+  });
+}
 
 // Copiar código Pix
 btnCopiarPix.addEventListener("click", async () => {
@@ -195,7 +209,7 @@ function addToCart(itemName, itemPrice) {
 // Finalizar Compra
 btnFinalizarCompra.addEventListener("click", () => {
   if (cart.length === 0) {
-    alert("Seu carrinho está vazio!");
+    emptyCartModal.classList.add("ativo");
     return;
   }
   modalPix.classList.add("ativo");
