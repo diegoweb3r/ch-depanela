@@ -163,26 +163,20 @@
 </section>
 
 <section class="modal-overlay" id="modalPix">
-  <form id="formPresente">
-    <div class="input-container">
-      <label for="nomeConvidado">Seu nome: </label>
-      <input
-      type="text"
-      id="nomeConvidado"
-      placeholder="Digite seu nome"
-      required
-      />
+  <button
+      type="button"
+      class="btn-fechar"
+          id="btnFecharModalPix"
+          aria-label="Fechar"
+        >
+          ❌
+        </button>
+  <div id="confirmarPresente">
+    <div class="confirmacao-titulos">
+      <h2>Agora é a boa!</h2>
+      <p>Só copiar o código Pix e colar no seu app!</p>
     </div>
-    <div class="input-container">
-      <label for="msgConvidado">Deixe seu recado (Opcional):</label>
-      <textarea
-      id="msgConvidado"
-      name="mensagem"
-      rows="3"
-      cols="40"
-      placeholder="Digite aqui sua mensagem com carinho"
-      ></textarea>
-    </div>
+
     <div class="pix-area" id="pixArea">
       <div class="qrcode-wrapper">
         <canvas id="qrcodeCanvas"></canvas>
@@ -197,7 +191,7 @@
         </button>
       </div>
     </div>
-  </form>
+  </div>
 
 </section>
     <footer>

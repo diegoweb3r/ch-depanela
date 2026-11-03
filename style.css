@@ -297,23 +297,11 @@ body:has(.modal-overlay.ativo)::before {
     margin-bottom:1rem ;
 }
 
-#formPresente input, #formPresente textarea{
-    border: none;
-}
-
-.input-container{
+.confirmacao-titulos{
     display: flex;
     flex-direction: column;
 }
 
-.input-container label, .input-container input, .input-container textarea{
-    margin-bottom: 0.8rem;
-}
-
-.input-container input, .input-container textarea{
-    padding: .5rem;
-
-}
 
 .input-group{
     display: flex;

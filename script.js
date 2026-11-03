@@ -15,7 +15,11 @@ const qrcodeCanvas = document.getElementById("qrcodeCanvas");
 const pixCodigoInput = document.getElementById("pixCodigoInput");
 const btnCopiarPix = document.getElementById("btnCopiarPix");
 const cards = document.querySelectorAll(".presente-card");
+const modalPix = document.getElementById("modalPix");
 const continuarComprandoButton = document.getElementById("continuarComprandoButton");
+const btnFinalizarCompra = document.getElementById("btnFinalizarCompra");
+const btnFecharModalPix = document.getElementById("btnFecharModalPix");
+const totalCart = document.getElementById("totalCart");
 const cart = [];
 
 
@@ -109,26 +113,14 @@ cards.forEach((card) => {
     modalItemNome.innerText = titulo;
     modalItemValor.innerText = precoTexto.replace("R$", "").trim();
 
-
-      const pixPayload = gerarPixCopiaECola(
-      PIX_CONFIG.chave,
-      PIX_CONFIG.beneficiario,
-      PIX_CONFIG.cidade,
-      precoNumerico
-    );
-
-    pixCodigoInput.value = pixPayload;
-
     // 1º: Torna o modal visível na tela
     modal.classList.add("ativo");
-
-    // 2º: Desenha o QR Code (agora que o canvas já tem dimensões visíveis)
-    desenharQRCode(pixPayload);
 
     addToCart(titulo, precoNumerico);
   });
 });
 
+// --- EVENTOS DE FECHAMENTO DO MODAL ---
 // Fechar modal no botão X
 btnFecharModal.addEventListener("click", () => {
   modal.classList.remove("ativo");
@@ -146,6 +138,7 @@ window.addEventListener("click", (e) => {
   }
 });
 
+
 // Copiar código Pix
 btnCopiarPix.addEventListener("click", async () => {
   try {
@@ -161,6 +154,7 @@ btnCopiarPix.addEventListener("click", async () => {
     alert("Código Pix copiado!");
   }
 });
+
 
 //Adicionar ao carrinho
 function addToCart(itemName, itemPrice) {
@@ -198,15 +192,26 @@ function addToCart(itemName, itemPrice) {
     });
 }
 
-//Soma os itens do carrinho
-function sumItensToCart(itemPrice){
-    let currentTotal = 0;
-  currentTotal += itemPrice;
+// Finalizar Compra
+btnFinalizarCompra.addEventListener("click", () => {
+  if (cart.length === 0) {
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+  modalPix.classList.add("ativo");
   
-  return currentTotal;
-}
+  const totalPresente = cart.reduce((acc, curr) => acc + curr.preco, 0);
+  const pixPayload = gerarPixCopiaECola(
+    PIX_CONFIG.chave,
+    PIX_CONFIG.beneficiario,
+    PIX_CONFIG.cidade,
+    totalPresente
+  );
 
-//Remover item do carrinho
-function removeItemFromCart(event){
+  pixCodigoInput.value = pixPayload;
+  desenharQRCode(pixPayload);
+});
 
-}
+btnFecharModalPix.addEventListener("click", () => {
+  modalPix.classList.remove("ativo");
+});
