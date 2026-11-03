@@ -156,7 +156,7 @@ main p{
 
 .presentes-cards-containers{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     width: 100%;
     max-width: 1200px;
@@ -325,7 +325,7 @@ body:has(.modal-overlay.ativo)::before {
 
 
 @media (min-width: 640px){
-    .presentes-container{
-        grid-template-columns: repeat(2, 1fr)
+    .presentes-cards-containers{
+        grid-template-columns: repeat(3, 1fr);
     }
 }
