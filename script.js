@@ -89,12 +89,9 @@ function desenharQRCode(codigoPix) {
     );
   } else {
     // Fallback: se a biblioteca não carregar por bloqueador de anúncios ou falha de rede,
-    // usa a API de QR Code gratuita substituindo temporariamente o canvas por uma imagem
-    console.warn("Biblioteca QRCode não encontrada. Usando gerador de imagem alternativo.");
-    const imgUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(codigoPix)}`;
     
     const wrapper = document.querySelector(".qrcode-wrapper");
-    wrapper.innerHTML = `<img src="${imgUrl}" alt="QR Code Pix" width="200" height="200" />`;
+    wrapper.textContent = "Erro ao gerar QR Code. Utilize a função de copiar código Pix.";
   }
 }
 
